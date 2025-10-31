@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ลอยกระทงออนไลน์ บางรักน้อย</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="config.js"></script>
+  <script defer src="storage.js"></script>
+  <script defer src="app.js"></script>
+  <meta name="description" content="ลอยกระทงออนไลน์ พิมพ์คำอธิษฐานแล้วปล่อยกระทง พร้อมแชร์ลิงก์สั้น และดูสถิติทั้งงานได้">
+  <script defer src="regions.js"></script>
+  <script defer src="fireworks.js"></script>
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true"></div>
+  <div class="scene-background"></div>
+  <header class="site-header">
+    <div class="brand">
+      <img src="assets/logo.png" alt="ตรา/โลโก้หน่วยงาน" class="logo">
+      <div class="brand-text">
+        <h1>ลอยกระทงออนไลน์</h1>
+        <p>บางรักน้อย</p>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html">หน้าหลัก</a>
+      <a href="about.html">เกี่ยวกับงานประเพณี</a>
+      <a href="wishes.html">🪷 กระทงรวมใจ</a>
+      <a href="stats.html">📊 สถิติ</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>🌕 คืนเพ็ญเดือนสิบสอง…ปล่อยคำอธิษฐานของคุณไปกับสายน้ำ</h2>
+      <div class="wish-form">
+        <input id="wish" type="text" maxlength="120" placeholder="พิมพ์คำอธิษฐานของคุณ (ไม่เกิน 120 อักขระ)">
+        <button id="launchBtn">ลอยเลย!</button>
+      </div>
+
+      <div class="picker" id="picker" aria-label="เลือกรูปแบบกระทง">
+        <button data-style="1" class="active"><img src="assets/krathong1.png" alt="แบบที่ 1"></button>
+        <button data-style="2"><img src="assets/krathong2.png" alt="แบบที่ 2"></button>
+        <button data-style="3"><img src="assets/krathong3.png" alt="แบบที่ 3"></button>
+      </div>
+
+      <p class="note">* คำอธิษฐานจะถูกบันทึกไว้ใน “กระทงรวมใจ”</p>
+
+      <div class="share" id="shareBox">
+        <strong>ลิงก์สำหรับแชร์:</strong>
+        <div class="link" id="shareLink"></div>
+        <div style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap">
+          <button id="copyBtn">คัดลอกลิงก์</button>
+          <button id="nativeShareBtn">แชร์ผ่านแอป</button>
+        </div>
+      </div>
+      <div class="toast" id="toast">คัดลอกลิงก์แล้ว ✔</div>
+    </section>
+
+    <div class="river-wrap">
+      <section id="river" aria-label="แม่น้ำสำหรับปล่อยกระทง"><div class="scene-inriver" aria-hidden="true"></div></section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <small>© 2025 Bang Rak Noi SAO. All rights reserved.</small>
+  </footer>
+</body>
+</html>
