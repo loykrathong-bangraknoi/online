@@ -1,9 +1,24 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
+<link rel="stylesheet" href="share-icons.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  canvas, .container {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ลอยกระทงออนไลน์ องค์การบริหารส่วนตำบลบางรักน้อย</title>
+    <link rel="icon" href="assets/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -14,6 +29,16 @@
   <meta name="description" content="ลอยกระทงออนไลน์ พิมพ์คำอธิษฐานแล้วปล่อยกระทง พร้อมแชร์ลิงก์สั้น และดูสถิติทั้งงานได้">
   <script defer src="regions.js"></script>
   <script defer src="fireworks.js"></script>
+<!-- Firebase v9 COMPAT -->
+<script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore-compat.js"></script>
+<script src="config.js"></script>
+<script>
+  try {
+    if (!firebase.apps.length) firebase.initializeApp(window.AppConfig.firebase);
+    window._db = firebase.firestore();
+  } catch (e) { console.error('Firebase init error', e); }
+</script>
 </head>
 <body>
   <div class="page-bg" aria-hidden="true"></div>
