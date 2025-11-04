@@ -1,98 +1,80 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
 <head>
-<link rel="stylesheet" href="share-icons.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
-  canvas, .container {
-    max-width: 100%;
-    height: auto;
-  }
-</style>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ลอยกระทงออนไลน์ องค์การบริหารส่วนตำบลบางรักน้อย</title>
-    <link rel="icon" href="assets/logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="config.js"></script>
-  <script defer src="storage.js"></script>
-  <script defer src="app.js"></script>
-  <meta name="description" content="ลอยกระทงออนไลน์ พิมพ์คำอธิษฐานแล้วปล่อยกระทง พร้อมแชร์ลิงก์สั้น และดูสถิติทั้งงานได้">
-  <script defer src="regions.js"></script>
-  <script defer src="fireworks.js"></script>
-<!-- Firebase v9 COMPAT -->
-<script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore-compat.js"></script>
-<script src="config.js"></script>
-<script>
-  try {
-    if (!firebase.apps.length) firebase.initializeApp(window.AppConfig.firebase);
-    window._db = firebase.firestore();
-  } catch (e) { console.error('Firebase init error', e); }
-</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ลอยกระทงออนไลน์ • องค์การบริหารส่วนตำบลบางรักน้อย</title>
+  <meta name="description" content="มาร่วมลอยกระทงออนไลน์กับองค์การบริหารส่วนตำบลบางรักน้อย 💧🌕✨" />
+  <meta property="og:title" content="ลอยกระทงออนไลน์ • อบต.บางรักน้อย" />
+  <meta property="og:description" content="มาร่วมลอยกระทงออนไลน์กับองค์การบริหารส่วนตำบลบางรักน้อย 💧🌕✨" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://loykrathong-bangraknoi.github.io/loy-krathong-online/" />
+  <meta property="og:image" content="assets/logo.png" />
+  <link rel="icon" href="assets/logo.png" />
+  <link rel="stylesheet" href="styles.css?v=6002" />
+  <script defer src="theme.js?v=6002"></script>
 </head>
 <body>
-  <div class="page-bg" aria-hidden="true"></div>
-  <div class="scene-background"></div>
-  <header class="site-header">
+  <div class="page-bg"></></div>
+
+  <header class="topbar">
     <div class="brand">
-      <img src="assets/logo.png" alt="ตรา/โลโก้หน่วยงาน" class="logo">
-      <div class="brand-text">
+      <img class="logo" src="assets/logo.png" alt="ตรา องค์การบริหารส่วนตำบลบางรักน้อย" />
+      <div class="title">
         <h1>ลอยกระทงออนไลน์</h1>
-        <p>องค์การบริหารส่วนตำบลบางรักน้อย</p>
+        <small>องค์การบริหารส่วนตำบลบางรักน้อย</small>
       </div>
     </div>
-    <nav>
-      <a href="index.html">หน้าหลัก</a>
-      <a href="about.html">เกี่ยวกับงานประเพณี</a>
-      <a href="wishes.html">🪷 กระทงรวมใจ</a>
-      <a href="stats.html">📊 สถิติ</a>
+    <nav class="nav">
+      <a href="./index.html">หน้าหลัก</a>
+      <a href="./about.html">เกี่ยวกับงานประเพณี</a>
+      <a href="./wishes.html">กระทงรวมใจ</a>
+      <a href="./stats.html">สถิติ</a>
     </nav>
   </header>
 
   <main class="container">
-    <section class="hero">
-      <h2>🌕 คืนเพ็ญเดือนสิบสอง…ปล่อยคำอธิษฐานของคุณไปกับสายน้ำ</h2>
-      <div class="wish-form">
-        <input id="wish" type="text" maxlength="120" placeholder="พิมพ์คำอธิษฐานของคุณ (ไม่เกิน 120 อักขระ)">
-        <button id="launchBtn">ลอยเลย!</button>
+    <section class="card big-intro">
+      <div class="picker">
+        <input id="wishText" class="wish" maxlength="120" placeholder="พิมพ์คำอธิษฐานของคุณ (ไม่เกิน 120 อักขระ)" />
+        <button id="floatBtn" class="btn">ลอยเลย!</button>
       </div>
-
-      <div class="picker" id="picker" aria-label="เลือกรูปแบบกระทง">
-        <button data-style="1" class="active"><img src="assets/krathong1.png" alt="แบบที่ 1"></button>
-        <button data-style="2"><img src="assets/krathong2.png" alt="แบบที่ 2"></button>
-        <button data-style="3"><img src="assets/krathong3.png" alt="แบบที่ 3"></button>
+      <div class="krathong-choices large" role="radiogroup" aria-label="เลือกรูปแบบกระทง">
+        <button class="kbtn active" data-type="krathong1" aria-checked="true" role="radio"><img src="assets/krathong1.png" alt="กระทงแบบ 1" /></button>
+        <button class="kbtn" data-type="krathong2" role="radio"><img src="assets/krathong2.png" alt="กระทงแบบ 2" /></button>
+        <button class="kbtn" data-type="krathong3" role="radio"><img src="assets/krathong3.png" alt="กระทงแบบ 3" /></button>
       </div>
-
-      <p class="note">* คำอธิษฐานจะถูกบันทึกไว้ใน “กระทงรวมใจ”</p>
-
-      <div class="share" id="shareBox">
-        <strong>ลิงก์สำหรับแชร์:</strong>
-        <div class="link" id="shareLink"></div>
-        <div style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap">
-          <button id="copyBtn">คัดลอกลิงก์</button>
-          <button id="nativeShareBtn">แชร์ผ่านแอป</button>
-        </div>
-      </div>
-      <div class="toast" id="toast">คัดลอกลิงก์แล้ว ✔</div>
+      <small class="hint">* คำอธิษฐานจะถูกบันทึกไว้ใน “กระทงรวมใจ” บนอุปกรณ์ของคุณ และ (ถ้าตั้งค่า Live) จะส่งขึ้นส่วนกลาง</small>
     </section>
 
-    <div class="river-wrap">
-      <section id="river" aria-label="แม่น้ำสำหรับปล่อยกระทง"><div class="scene-inriver" aria-hidden="true"></div></section>
-    </div>
+    <section id="river" aria-label="แม่น้ำสำหรับปล่อยกระทง">
+      <div class="scene-inriver" aria-hidden="true">
+        <div class="moon-glow"></div>
+      </div>
+      <div class="waterfx" aria-hidden="true"></div>
+      <div id="floatArea" class="float-area"></div>
+      <div id="fireworks" class="fireworks" aria-hidden="true"></div>
+    </section>
+
+    <section class="card sharebar" aria-label="แชร์ไปยังโซเชียล">
+      <div class="share-wrap">
+        <button class="sbtn fb" data-app="facebook"><span class="ico"></span> Facebook</button>
+        <button class="sbtn line" data-app="line"><span class="ico">LINE</span> Line</button>
+        <button class="sbtn x" data-app="x"><span class="ico">𝕏</span> X</button>
+        <button class="sbtn tiktok" data-app="tiktok"><span class="ico">♪</span> TikTok</button>
+        <button class="sbtn copy" data-app="copy">Copy Link</button>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <small>© 2025 Bang Rak Noi SAO. All rights reserved.</small>
-  </footer>
+  <footer class="foot">© 2025 องค์การบริหารส่วนตำบลบางรักน้อย</footer>
+
+  <script>
+    window.__SHARE_URL__  = "https://loykrathong-bangraknoi.github.io/loy-krathong-online/";
+    window.__SHARE_TEXT__ = "มาร่วมลอยกระทงออนไลน์กับองค์การบริหารส่วนตำบลบางรักน้อย 💧🌕✨";
+  </script>
+  <script src="live-config.js?v=6002"></script>
+  <script src="live.js?v=6002"></script>
+  <script src="main.js?v=6002"></script>
 </body>
 </html>

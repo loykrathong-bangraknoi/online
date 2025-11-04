@@ -1,75 +1,14 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-<link rel="stylesheet" href="share-icons.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
-  canvas, .container {
-    max-width: 100%;
-    height: auto;
-  }
-</style>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>กระทงรวมใจ — คำอธิษฐานทั้งหมด</title>
-<link rel="icon" href="assets/logo.png">
-  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="config.js"></script>
-  <script defer src="storage.js"></script>
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>กระทงรวมใจ</title><link rel="stylesheet" href="styles.css?v=6002">
+<body class="container">
+  <a class="btn" href="index.html">← กลับหน้าหลัก</a>
+  <section class="card">
+    <h2>กระทงรวมใจ (จากอุปกรณ์ของคุณ)</h2>
+    <ul id="list"></ul>
+  </section>
   <script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      const list = document.getElementById('list')
-      const wishes = await window.Storage.getAllDetailed()
-      if (!wishes.length){
-        list.innerHTML = '<p>ยังไม่มีคำอธิษฐาน ลองกลับไปที่หน้าหลักแล้วปล่อยกระทงนะครับ 🪷</p>'
-        return
-      }
-      list.innerHTML = wishes.map(w => `
-        <article class="card">
-          <div>${(w.text || '').replace(/[<>]/g,'')} <span style="opacity:.7;font-size:12px">— แบบที่ ${w.style||1}</span></div>
-          <div class="time">${new Date(w.ts||Date.now()).toLocaleString('th-TH')}</div>
-        </article>
-      `).join('')
-    })
+    const list = document.getElementById('list');
+    const arr = JSON.parse(localStorage.getItem('wishes')||'[]').reverse();
+    list.innerHTML = arr.map(x=>`<li>${new Date(x.time).toLocaleString()} — ${x.text||'(ไม่ระบุ)'}</li>`).join('') || '<p>ยังไม่มีคำอธิษฐาน</p>';
   </script>
-  <script defer src="regions.js"></script>
-  <script defer src="fireworks.js"></script>
-</head>
-<body>
-  <div class="page-bg" aria-hidden="true"></div>
-  <div class="scene-background"></div>
-  <header class="site-header">
-    <div class="brand">
-      <img src="assets/logo.png" alt="ตรา/โลโก้หน่วยงาน" class="logo">
-      <div class="brand-text">
-        <h1>🪷 กระทงรวมใจ</h1>
-        <p>รวมคำอธิษฐานจากผู้ร่วมงาน</p>
-      </div>
-    </div>
-    <nav>
-      <a href="index.html">หน้าหลัก</a>
-      <a href="about.html">เกี่ยวกับงานประเพณี</a>
-      <a href="wishes.html">🪷 กระทงรวมใจ</a>
-      <a href="stats.html">📊 สถิติ</a>
-    </nav>
-  </header>
-
-  <main class="container">
-    <section class="hero">
-      <h2>คำอธิษฐานทั้งหมด</h2>
-      <div id="list" class="list"></div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <small>© 2025 Bang Rak Noi SAO.</small>
-  </footer>
 </body>
-</html>
